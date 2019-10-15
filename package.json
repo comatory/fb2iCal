@@ -6,6 +6,7 @@
   "scripts": {
     "start": "PORT=80 node lib/index.js",
     "start:dev": "nodemon lib/index.js",
+    "start:dev:inspect": "nodemon --inspect lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -19,9 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dayjs": "^1.8.16",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "node-html-parser": "^1.1.16",
+    "ics": "^2.18.0",
     "puppeteer": "^1.20.0"
   },
   "devDependencies": {
