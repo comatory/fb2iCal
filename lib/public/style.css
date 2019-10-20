@@ -1,0 +1,79 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 16px;
+  margin: 0px;
+}
+
+header, footer, article {
+  padding: 5px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+}
+
+article#main {
+  flex: 1;
+}
+
+p, input, table, button, label {
+  font-size: 1rem;
+}
+
+#current-download {
+  display: none;
+}
+
+.list-wrapper {
+  max-height: 500px;
+  overflow: auto;
+}
+
+#list {
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+input#url {
+  flex: 1;
+}
+
+#form {
+  flex: 1;
+  display: flex;
+  min-width: 300px;
+}
+
+#form input {
+  margin: 5px;
+}
+
+#status {
+  flex: 1;
+  height: 1rem;
+  margin: 5px;
+}
+
+.status-item {
+  display: none;
+  min-width: 200px;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
