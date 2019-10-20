@@ -25,7 +25,8 @@
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "ics": "^2.18.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
