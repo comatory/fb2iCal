@@ -1,18 +1,52 @@
+/* Define platform-specific typefaces */
+
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+
+/* Web query */
+@media screen and (min-width: 501px) {
+  img#logo {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Mobile screen+ query */
 @media screen and (max-width: 500px) {
   h1 {
     font-size: 1.6rem;
     margin: 0;
   }
+  article#main, input {
+    font-size: 1.1rem;
+  }
+  img#logo {
+    width: 64px;
+    height: 64px;
+  }
 }
 
+/* Mobile screen query */
 @media screen and (max-width: 320px) {
   h1 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 0;
+  }
+  article#main, input {
+    font-size: 1.2rem;
+  }
+  img#logo {
+    width: 32px;
+    height: 32px;
   }
 }
 
 body {
+  font-family:-apple-system; "system";
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -23,6 +57,11 @@ body {
   box-sizing: border-box;
 }
 
+header {
+  display: flex;
+  align-items: center;
+}
+
 footer {
   background-color: #fff;
 }
@@ -31,7 +70,11 @@ article#main {
   flex: 1;
 }
 
-p, input, table, button, label {
+img#logo {
+  margin: 5px;
+}
+
+input {
   font-size: 1rem;
 }
 
@@ -76,6 +119,9 @@ input#url {
 .status-item {
   display: none;
   min-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .show {
