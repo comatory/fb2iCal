@@ -18,11 +18,9 @@ body {
   min-height: 100vh;
   font-size: 16px;
   margin: 0px;
-  max-width: 800px;
-}
-
-header, footer, article {
   padding: 5px;
+  max-width: 600px;
+  box-sizing: border-box;
 }
 
 footer {

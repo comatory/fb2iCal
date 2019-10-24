@@ -14,6 +14,12 @@ Run development server: `npm run start:dev`.
 
 Run development server with debugger `npm run start:dev:inspect`.
 
+### Static assets
+
+There is no clever way to invalidate static assets (HTML, CSS, JS), so if you make any changes, just increment query parameters in view template(s) and service worker. Changing service worker should trigger new _update_ event that should also re-fetch new assets.
+
+Sorry I wanted to keep the app simple so this is done manually. No big deal for me though.
+
 ## Deployment
 
 The command `npm run start` will start the server in production mode. 
