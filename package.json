@@ -25,9 +25,12 @@
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
+    "express-winston": "^4.0.1",
     "ics": "^2.18.0",
     "request": "^2.88.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
