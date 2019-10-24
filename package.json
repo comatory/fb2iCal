@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "App that converts events on Facebook event page to iCal file.",
   "main": "lib/index.js",
+  "engines": {
+    "npm": "6.11.3",
+    "node": "10.15.0"
+  },
   "scripts": {
     "start": "node lib/index.js",
     "start:dev": "NODE_ENV=development PORT=3000 nodemon lib/index.js",
