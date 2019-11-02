@@ -2,3 +2,8 @@ node_modules/
 dist/
 logs/
 *.log
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
