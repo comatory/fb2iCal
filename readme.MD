@@ -30,7 +30,7 @@ The app is automatically set up to create logs in `logs/` directory each day but
 
 ### HTTPS
 
-App contains middleware that will redirect all traffic to HTTPS if the requests contain header `X-FORWARDED-PROTO`.
+App contains middleware that will redirect all traffic to HTTPS if the requests contain header `X-FORWARDED-PROTO`. For this to work, the middleware has to be enabled by setting environment variable `ENFORCE_HTTPS` to value `1`.
 
 There are environment variables for setting pu SSL certificate from Let's Encrypt (acme challenge): `CERT_ENDPOINT` and `CERT_SECRET`.
 
