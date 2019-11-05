@@ -2,7 +2,7 @@
 
 This app allows you to download *iCal* calendar files from Facebook URL / event number.
 
-You can use it as a service at [https://fb2ical.ondrejsynacek.com](https://fb2ical.ondrejsynacek.com) or use this repository to launch your own instance.
+You can use it as a service at [https://fb2ical.com](https://https://fb2ical.com) or use this repository to launch your own instance.
 
 The page that is served by the app uses a service worker and can be used offline and installed as PWA (Progressive Web App).
 
@@ -32,7 +32,10 @@ The app is automatically set up to create logs in `logs/` directory each day but
 
 App contains middleware that will redirect all traffic to HTTPS if the requests contain header `X-FORWARDED-PROTO`. For this to work, the middleware has to be enabled by setting environment variable `ENFORCE_HTTPS` to value `1`.
 
-There are environment variables for setting pu SSL certificate from Let's Encrypt (acme challenge): `CERT_ENDPOINT` and `CERT_SECRET`.
+There are environment variables for setting pu SSL certificate from Let's Encrypt ([acme challenge](https://letsencrypt.org/docs/challenge-types/)):
+
+* `CERT_ENDPOINT`: endpoint without leading slash such as `.well-known/acme-challenge`
+* `CERT_SECRET`
 
 This way you can set up the endpoint that will reply with secret and this should allow you to generate key pairs.
 
