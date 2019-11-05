@@ -2,7 +2,7 @@
 
 This app allows you to download *iCal* calendar files from Facebook URL / event number.
 
-You can use it as a service at [https://fb2ical.com](https://https://fb2ical.com) or use this repository to launch your own instance.
+You can use it as a service at [https://fb2ical.com](https://fb2ical.com) or use this repository to launch your own instance.
 
 The page that is served by the app uses a service worker and can be used offline and installed as PWA (Progressive Web App).
 
