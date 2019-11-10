@@ -132,3 +132,17 @@ input#url {
   display: none;
 }
 
+td.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+td.actions a {
+  margin: 2px;
+  text-decoration: none;
+}
+
+a.delete-record {
+  font-size: 1.2rem;
+}
