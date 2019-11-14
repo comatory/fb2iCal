@@ -3,7 +3,6 @@
 @font-face {
   font-family: "system";
   font-style: normal;
-  font-weight: 300;
   src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
 }
 
@@ -130,6 +129,18 @@ input#url {
 
 .hidden {
   display: none;
+}
+
+thead {
+  font-weight: 800;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: whitesmoke;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e8e8e8;
 }
 
 td.actions {
