@@ -1,6 +1,6 @@
 {
   "name": "facebook-events-ical-converter",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "App that converts events on Facebook event page to iCal file.",
   "main": "lib/index.js",
   "engines": {
