@@ -1,5 +1,7 @@
 # fb2iCal
 
+![fb2iCal animated gif of the app](./docs/app-preview.gif)
+
 This app allows you to download *iCal* calendar files from Facebook URL / event number.
 
 You can use it as a service at [https://fb2ical.com](https://fb2ical.com) or use this repository to launch your own instance.
