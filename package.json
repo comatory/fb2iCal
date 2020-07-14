@@ -11,7 +11,7 @@
     "start": "node lib/index.js",
     "start:dev": "NODE_ENV=development PORT=3000 nodemon lib/index.js",
     "start:dev:inspect": "NODE_ENV=development PORT=3000 nodemon --inspect lib/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "facebook",
@@ -37,6 +37,10 @@
     "winston-daily-rotate-file": "^4.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "chai": "^4.2.0",
+    "chai-sinon": "^2.8.1",
+    "jest": "^26.1.0",
+    "nodemon": "^1.19.3",
+    "sinon": "^9.0.2"
   }
 }
