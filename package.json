@@ -34,7 +34,8 @@
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.2.1"
+    "winston-daily-rotate-file": "^4.2.1",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
