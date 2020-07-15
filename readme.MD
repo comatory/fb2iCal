@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/comatory/fb2iCal.svg?branch=master)](https://travis-ci.com/comatory/fb2iCal)
+
 # fb2iCal
 
 ![fb2iCal animated gif of the app](./docs/app-preview.gif)
