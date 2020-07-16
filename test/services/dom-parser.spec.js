@@ -19,7 +19,7 @@ describe(parseUsingDOM, () => {
           </head>
         </html>
       `
-      const { title } = parseUsingDOM(html, 'abc.xyz', { logger })
+      const { title } = parseUsingDOM(html, { logger })
 
       expect(title).to.equal('Test')
     })
@@ -40,7 +40,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { start } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { start } = parseUsingDOM(html, { logger })
 
         expect(start).to.deep.equal([ 2020, 3, 2, 13, 30 ])
       })
@@ -64,7 +64,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { start } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { start } = parseUsingDOM(html, { logger })
 
         spy.mockRestore()
 
@@ -91,7 +91,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { duration } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { duration } = parseUsingDOM(html, { logger })
 
         spy.mockRestore()
 
@@ -115,25 +115,11 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { duration } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { duration } = parseUsingDOM(html, { logger })
 
         expect(duration).to.deep.equal({ minutes: 120 })
       })
     })
-
-    it('should return passed in url', () => {
-      const html = `
-        <html>
-          <head>
-            <title>Test</title>
-          </head>
-        </html>
-      `
-      const { url } = parseUsingDOM(html, 'abc.xyz', { logger })
-
-      expect(url).to.equal('abc.xyz')
-    })
-
 
     describe('location', () => {
       it('should return approximated location and area', () => {
@@ -150,7 +136,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { location } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { location } = parseUsingDOM(html, { logger })
 
         expect(location).to.equal('123 Main St. AcmeTown, Main area')
       })
@@ -170,7 +156,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { location } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { location } = parseUsingDOM(html, { logger })
 
         expect(location).to.equal('123 Main St. AcmeTown')
       })
@@ -190,7 +176,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { location } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { location } = parseUsingDOM(html, { logger })
 
         expect(location).to.equal('Some area')
       })
@@ -210,7 +196,7 @@ describe(parseUsingDOM, () => {
             </body>
           </html>
         `
-        const { location } = parseUsingDOM(html, 'abc.xyz', { logger })
+        const { location } = parseUsingDOM(html, { logger })
 
         expect(location).to.equal('')
       })
@@ -223,7 +209,7 @@ describe(parseUsingDOM, () => {
         callback()
       })
 
-      parseUsingDOM('', '', { logger })
+      parseUsingDOM('', { logger })
     })
 
 
@@ -233,7 +219,7 @@ describe(parseUsingDOM, () => {
         callback()
       })
 
-      parseUsingDOM('', '', { logger })
+      parseUsingDOM('', { logger })
     })
 
 
@@ -243,7 +229,7 @@ describe(parseUsingDOM, () => {
         callback()
       })
 
-      parseUsingDOM('', '', { logger })
+      parseUsingDOM('', { logger })
     })
 
 
@@ -253,7 +239,7 @@ describe(parseUsingDOM, () => {
         callback()
       })
 
-      parseUsingDOM('', '', { logger })
+      parseUsingDOM('', { logger })
     })
   })
 
@@ -266,7 +252,7 @@ describe(parseUsingDOM, () => {
           </head>
         </html>
       `
-      const eventData = parseUsingDOM(html, 'abc.xyz', { logger })
+      const eventData = parseUsingDOM(html, { logger })
 
       expect(eventData).to.be.null
     })
@@ -286,7 +272,7 @@ describe(parseUsingDOM, () => {
           </body>
         </html>
       `
-      const eventData = parseUsingDOM(html, 'abc.xyz', { logger })
+      const eventData = parseUsingDOM(html, { logger })
 
       expect(eventData).to.be.null
     })

@@ -102,4 +102,23 @@ describe(retrieveICS, () => {
       callback()
     }
   })
+
+
+  it('should contain normalized URL when using DOM parser', async () => {
+    const html = `
+      <html>
+        <head>
+          <title>Test</title>
+        </head>
+        <body>
+        </body>
+      </html>
+    `
+
+    setMockCrawlResult(html)
+
+    const icsContent = await retrieveICS('123', { logger })
+    expect(icsContent).to.include('URL:https://mobile.facebook.com/events/123')
+
+  })
 })
