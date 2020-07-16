@@ -72,7 +72,7 @@ describe(parseUsingDOM, () => {
       })
 
 
-      it('should return duration based on current time if  ' +
+      it('should return duration of minimum 120 minutes if  ' +
          'no time data is found', () => {
         const now = new Date('2020-01-01 12:00:00')
         const spy = jest
@@ -95,7 +95,7 @@ describe(parseUsingDOM, () => {
 
         spy.mockRestore()
 
-        expect(duration).to.deep.equal({ minutes: 0 })
+        expect(duration).to.deep.equal({ minutes: 120 })
       })
 
 
