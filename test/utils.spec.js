@@ -1,5 +1,4 @@
 const { expect } = require('chai')
-const winston = require('winston')
 
 const utils = require('../lib/utils')
 
@@ -150,27 +149,6 @@ describe('utils', () => {
     it('should create instance of error with 422 status code', () => {
       expect(utils.createParserError().statusCode)
         .to.equal(422)
-    })
-  })
-
-  describe('logging', () => {
-    it('should create console transport for logging in dev mode', () => {
-      expect(utils.createTransports(true)[0])
-        .to.be.instanceOf(winston.transports.Console)
-    })
-
-
-    it('should NOT create console transport for logging in undefined mode', () => {
-      const transports = utils.createTransports()
-
-      expect(transports).to.have.length(1)
-      expect(transports[0]).to.be.instanceOf(winston.transports.DailyRotateFile)
-    })
-
-
-    it('should create log rotate transport for logging in dev mode', () => {
-      expect(utils.createTransports(true)[1])
-        .to.be.instanceOf(winston.transports.DailyRotateFile)
     })
   })
 })

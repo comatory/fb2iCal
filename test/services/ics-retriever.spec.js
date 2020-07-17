@@ -12,9 +12,7 @@ const {
   clearMockCrawlResult,
 } = require('../../mocks/crawler.mock')
 
-const { retrieveICS } = require('../../lib/services/ics-retriever')
-
-jest.mock('../../lib/services/crawler', () => mockCrawl)
+const { retrieveICS, extractEventDataFromHTML } = require('../../lib/services/ics-retriever')
 
 describe(retrieveICS, () => {
   let logger
@@ -35,7 +33,10 @@ describe(retrieveICS, () => {
 
     setMockCrawlResult(html)
 
-    const icsContent = await retrieveICS('https://facebook.com/events/123', { logger })
+    const icsContent = await retrieveICS('https://facebook.com/events/123', {
+      logger,
+      crawl: mockCrawl,
+    })
 
     expect(icsContent).to.be.ok
   })
@@ -52,10 +53,32 @@ describe(retrieveICS, () => {
 
     setMockCrawlResult(html)
 
-    const icsContent = await retrieveICS('https://facebook.com/events/123', { logger })
+    const icsContent = await retrieveICS('https://facebook.com/events/123', {
+      logger,
+      crawl: mockCrawl,
+    })
 
     expect(icsContent).to.include('SUMMARY:Test Event')
     expect(icsContent).to.include('LOCATION:Location X')
+  })
+
+
+  it('should extract event data using LDJSON', () => {
+    const html = `
+      <html>
+        <head>
+          <script type="application/ld+json">{"name":"Test Event","location":{"name":"Location X"}}</script>
+        </head>
+      </html>
+    `
+
+    const { location } = extractEventDataFromHTML(
+      html,
+      'https://facebook.com/events/123', {
+      logger,
+    })
+
+    expect(location).to.equal('Location X')
   })
 
 
@@ -76,13 +99,41 @@ describe(retrieveICS, () => {
 
     setMockCrawlResult(html)
 
-    const icsContent = await retrieveICS('https://facebook.com/events/123', { logger })
+    const icsContent = await retrieveICS('https://facebook.com/events/123', {
+      logger,
+      crawl: mockCrawl,
+    })
 
     expect(icsContent).to.include('LOCATION:123 Main St. AcmeTown, Main area')
   })
 
 
-  it('should throw parser error if no event data is found', async (callback) => {
+  it('should extract event data based on DOM', () => {
+    const html = `
+      <html>
+        <head>
+          <title>Test</title>
+        </head>
+        <body>
+          <div id="event_summary">
+            <div class="test_eventNode1"></div>
+            <div class="test_eventNode2"><div class="test_timeNode"></div><div class="test_locationNode"><table><tr><td><span></span><span>123 Main St.\nAcmeTown</span><span>Main area</span></td></tr></table></div></div>
+          </div>
+        </body>
+      </html>
+    `
+
+    const { location } = extractEventDataFromHTML(
+      html,
+      'https://facebook.com/events/123', {
+      logger,
+    })
+
+    expect(location).to.equal('123 Main St. AcmeTown, Main area')
+  })
+
+
+  it('should throw parser error if no event data is found', () => {
     const html = `
       <html>
         <head>
@@ -92,15 +143,13 @@ describe(retrieveICS, () => {
       </html>
     `
 
-    setMockCrawlResult(html)
-
-    try {
-      const eventData = await retrieveICS('https://facebook.com/events/132', { logger })
-    } catch (err) {
-      expect(err.toString()).to.include('Unable to parse event data.')
-      expect(err.statusCode).to.equal(422)
-      callback()
-    }
+    expect(() => {
+      extractEventDataFromHTML(
+        html,
+        'https://facebook.com/events/132', {
+        logger,
+      })
+    }).to.throw('Unable to parse event data.')
   })
 
 
@@ -117,8 +166,8 @@ describe(retrieveICS, () => {
 
     setMockCrawlResult(html)
 
-    const icsContent = await retrieveICS('123', { logger })
+    const icsContent = await retrieveICS('123', { logger, crawl: mockCrawl })
     expect(icsContent).to.include('URL:https://mobile.facebook.com/events/123')
-
   })
 })
+
