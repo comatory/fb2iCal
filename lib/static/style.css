@@ -158,3 +158,11 @@ td.actions a {
 a.delete-record {
   font-size: 1.2rem;
 }
+
+.notice {
+  font-size: 0.9rem;
+}
+
+#nojs {
+  margin: 5px 0;
+}
