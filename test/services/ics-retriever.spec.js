@@ -12,7 +12,7 @@ const {
   clearMockCrawlResult,
 } = require('../../mocks/crawler.mock')
 
-const retrieveICS = require('../../lib/services/ics-retriever')
+const { retrieveICS } = require('../../lib/services/ics-retriever')
 
 jest.mock('../../lib/services/crawler', () => mockCrawl)
 
