@@ -8,9 +8,11 @@
     "node": "10.15.0"
   },
   "scripts": {
-    "start": "node lib/index.js",
-    "start:dev": "NODE_ENV=development PORT=3000 nodemon lib/index.js",
-    "start:dev:inspect": "NODE_ENV=development PORT=3000 nodemon --inspect lib/index.js",
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "start": "npm run build && node lib/index.js",
+    "start:dev": "concurrently \"npm run build:dev\" \"NODE_ENV=development PORT=3000 nodemon lib/index.js\"",
+    "start:dev:inspect": "npm run build:dev && NODE_ENV=development PORT=3000 nodemon --inspect lib/index.js",
     "test": "jest"
   },
   "keywords": [
@@ -40,8 +42,14 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-sinon": "^2.8.1",
+    "concurrently": "^5.2.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "html-webpack-plugin": "^4.3.0",
     "jest": "^26.1.0",
     "nodemon": "^1.19.3",
-    "sinon": "^9.0.2"
+    "sinon": "^9.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "workbox-webpack-plugin": "^5.1.3"
   }
 }

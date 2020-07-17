@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
-    <link rel="stylesheet" type="text/css" href="/style.css?9">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <title>Facebook Event to iCal Converter</title>
   </head>
 
@@ -74,12 +74,10 @@
     </article>
 
     <footer>
-      v.<%= version %> ◆
+      v.<%= htmlWebpackPlugin.options.version %> ◆
       <a href="https://ondrejsynacek.com" target="_blank">Ondrej Synacek</a> (2019) ◆
       <a href="https://github.com/comatory/fb2iCal" target="_blank" title="Github">Source</a> ◆
       <a href="/about" target="_blank" title="About the project">About</about>
     </footer>
-
-    <script src="/scripts.js?6"></script>
   </body>
 </html>
