@@ -8,7 +8,7 @@ const destination = path.join(__dirname, 'dist')
 const isDevelopment = Boolean(process.argv[2] && process.argv[2].includes('mode=development'))
 
 module.exports = {
-  entry: path.join(__dirname, 'lib', 'static', 'scripts.js'),
+  entry: path.join(__dirname, 'lib', 'static', 'index.js'),
   watch: isDevelopment,
   output: {
     filename: '[name].[hash].js',
