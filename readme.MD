@@ -10,6 +10,8 @@ You can use it as a service at [https://fb2ical.com](https://fb2ical.com) or use
 
 The page that is served by the app uses a service worker and can be used offline and installed as PWA (Progressive Web App).
 
+The site can run and download ICS file without JavaScript just fine. When JS is enabled, the server only downloads HTML file, parsing and creation of iCal file is performed inside the browser. The results will be same for both JS-enabed / disabled approach as the parser code is actually shared between browser and server.
+
 ## Development
 
 It can run in environment with NodeJS 10 installed. It does not use Facebook API for retrieving information, instead it relies on crawling and scraping event URL. This means that it can stop working or the results might not be reliable so use this at your own risk.
@@ -20,15 +22,13 @@ Run development server with debugger `npm run start:dev:inspect`.
 
 ### Static assets
 
-There is no clever way to invalidate static assets (HTML, CSS, JS), so if you make any changes, just increment query parameters in view template(s) and service worker. Changing service worker should trigger new _update_ event that should also re-fetch new assets.
-
-Sorry I wanted to keep the app simple so this is done manually. No big deal for me though.
+The frontend / assets are built by webpack and put into `dist/` folder. These assets are then served statically.
 
 ## Deployment
 
-The command `npm run start` will start the server in production mode. 
+The command `npm run start` will build the assets and start the server in production mode. 
 
-The app can be run as stateless and does not need any persistent storage.
+The app is stateless and does not need any persistent storage.
 
 The app is automatically set up to create logs in `logs/` directory each day but it's up to your environment if the file system is persisted.
 
