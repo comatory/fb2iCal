@@ -133,6 +133,29 @@ describe(retrieveICS, () => {
   })
 
 
+  it('should normalize URL when parsing event data based on DOM', () => {
+    const html = `
+      <html>
+        <head>
+          <title>Test</title>
+        </head>
+        <body>
+          <div id="event_summary">
+          </div>
+        </body>
+      </html>
+    `
+
+    const { url } = extractEventDataFromHTML(
+      html,
+      '123', {
+      logger,
+    })
+
+    expect(url).to.equal('https://mobile.facebook.com/events/123')
+  })
+
+
   it('should throw parser error if no event data is found', () => {
     const html = `
       <html>
