@@ -13,6 +13,7 @@
     "build:firebase:hosting": "npm run clean:build && NODE_ENV=production NODE_APP=firebase webpack --mode=production",
     "build:firebase:hosting:dev": "npm run clean:build && NODE_ENV=development NODE_APP=firebase webpack --mode=development",
     "clean:build": "rm dist/** || true",
+    "deploy:firebase": "npm run build:firebase:hosting && firebase deploy",
     "start": "npm run build && node lib/index.js",
     "start:dev": "concurrently \"npm run build:dev\" \"NODE_ENV=development PORT=3000 nodemon lib/index.js\"",
     "start:dev:inspect": "npm run build:dev && NODE_ENV=development PORT=3000 nodemon --inspect lib/index.js",
