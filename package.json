@@ -8,11 +8,16 @@
     "node": "10.15.0"
   },
   "scripts": {
-    "build": "webpack --mode=production",
-    "build:dev": "webpack --mode=development",
+    "build": "npm run clean:build && webpack --mode=production",
+    "build:dev": "npm run clean:build && webpack --mode=development",
+    "build:firebase:hosting": "npm run clean:build && NODE_ENV=production NODE_APP=firebase webpack --mode=production",
+    "build:firebase:hosting:dev": "npm run clean:build && NODE_ENV=development NODE_APP=firebase webpack --mode=development",
+    "clean:build": "rm dist/** || true",
+    "deploy:firebase": "npm run build:firebase:hosting && firebase deploy",
     "start": "npm run build && node lib/index.js",
     "start:dev": "concurrently \"npm run build:dev\" \"NODE_ENV=development PORT=3000 nodemon lib/index.js\"",
     "start:dev:inspect": "npm run build:dev && NODE_ENV=development PORT=3000 nodemon --inspect lib/index.js",
+    "start:dev:firebase": "npm run build:firebase:hosting:dev && NODE_ENV=development firebase emulators:start",
     "test": "jest"
   },
   "keywords": [
@@ -27,6 +32,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
     "dayjs": "^1.8.16",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
