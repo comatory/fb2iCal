@@ -30,7 +30,7 @@ const getFirebaseUrl = () => {
 
 module.exports = {
   entry: path.join(__dirname, 'lib', 'static', 'index.js'),
-  watch: isDevelopment && !isFirebaseEnv,
+  watch: isDevelopment,
   output: {
     filename: '[name].[hash].js',
     path: destination,

@@ -12,6 +12,14 @@ The page that is served by the app uses a service worker and can be used offline
 
 The site can run and download ICS file without JavaScript just fine. When JS is enabled, the server only downloads HTML file, parsing and creation of iCal file is performed inside the browser. The results will be same for both JS-enabed / disabled approach as the parser code is actually shared between browser and server.
 
+## Installing
+
+Run `npm install`. App should be compatible with `Node v10`.
+
+### Installing with Firebase
+
+Additionally to `npm install` in root directory, make sure you navigate to `functions/` directory and run `npm install there`. You need to set up Firebase service and install Firebase CLI in order to deploy and develop for Firebase service.
+
 ## Development
 
 It can run in environment with NodeJS 10 installed. It does not use Facebook API for retrieving information, instead it relies on crawling and scraping event URL. This means that it can stop working or the results might not be reliable so use this at your own risk.
@@ -19,6 +27,10 @@ It can run in environment with NodeJS 10 installed. It does not use Facebook API
 Run development server: `npm run start:dev`.
 
 Run development server with debugger `npm run start:dev:inspect`.
+
+### Development with Firebase
+
+Run `npm run start:dev:firebase` from project root. This will run webpack development server for frontend and also launch Firebase emulator. Unfortunately you will not get live reload on frontend because it is actually served using Firebase hosting emulator, so you will need to refresh the browser manually.
 
 ### Static assets
 
@@ -31,6 +43,10 @@ The command `npm run start` will build the assets and start the server in produc
 The app is stateless and does not need any persistent storage.
 
 The app is automatically set up to create logs in `logs/` directory each day but it's up to your environment if the file system is persisted.
+
+### Deployement with Firebase
+
+Run `npm run deploy:firebase` to deploy everything. Notice: the project contains symbolic link between `lib/` and `functions/` directories so Firebase functions can actually use the application code, otherwise it would not get uploaded. Do not remove this symbolic link.
 
 ### HTTPS
 
