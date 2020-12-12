@@ -8,9 +8,9 @@ class FirebaseTransport extends Transport {
     this._db = options.db
   }
 
-  log(info, callback) {
+  async log(info, callback) {
     try {
-      this._db.ref(`log-${new Date().getTime()}`).set(info)
+      await this._db.ref(`log-${new Date().getTime()}`).set(info)
       callback(null, info)
       this.emit('logged', info)
     } catch (err) {
