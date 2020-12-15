@@ -167,22 +167,3 @@ a.delete-record {
   margin: 5px 0;
 }
 
-#tracking-panel {
-  position: fixed;
-  bottom: 0;
-  border: 3px solid navy;
-  background-color: lightyellow;
-  max-width: 600px;
-  margin: 5px;
-  padding: 5px;
-}
-
-#tracking-panel__yes-button,
-#tracking-panel__no-button {
-  font-size: 1.2rem;
-}
-
-#tracking-panel__yes-button {
-  font-weight: 600;
-  margin-right: 5px;
-}

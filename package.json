@@ -8,10 +8,10 @@
     "node": "10.15.0"
   },
   "scripts": {
-    "build": "npm run clean:build && webpack --mode=production",
-    "build:dev": "npm run clean:build && webpack --mode=development",
-    "build:firebase:hosting": "npm run clean:build && NODE_ENV=production NODE_APP=firebase webpack --mode=production",
-    "build:firebase:hosting:dev": "npm run clean:build && NODE_ENV=development NODE_APP=firebase webpack --mode=development",
+    "build": "npm run clean:build && webpack --config=./webpack.prod.js",
+    "build:dev": "npm run clean:build && webpack --config=./webpack.dev.js",
+    "build:firebase:hosting": "npm run clean:build && NODE_ENV=production NODE_APP=firebase webpack --config=./webpack.prod.js",
+    "build:firebase:hosting:dev": "npm run clean:build && NODE_ENV=development NODE_APP=firebase webpack --config=./webpack.dev.js",
     "clean:build": "rm dist/** || true",
     "deploy:firebase": "npm run build:firebase:hosting && firebase deploy",
     "start": "npm run build && node lib/index.js",
@@ -41,6 +41,7 @@
     "ics": "^2.22.1",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
+    "svelte": "^3.31.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.2.1",
     "yargs": "^15.4.1"
@@ -50,12 +51,16 @@
     "chai-sinon": "^2.8.1",
     "concurrently": "^5.2.0",
     "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.1.0",
+    "mini-css-extract-plugin": "^1.3.3",
     "nodemon": "^1.19.3",
     "sinon": "^9.0.2",
+    "svelte-loader": "^2.13.6",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.7.0",
     "workbox-webpack-plugin": "^5.1.3"
   }
 }
