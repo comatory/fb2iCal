@@ -4,8 +4,6 @@
   import { configStore } from '../stores'
 
   $: showTrackingPanel = $configStore.track === undefined
-
-  configStore.subscribe(console.log)
 </script>
 
 {#if showTrackingPanel}
