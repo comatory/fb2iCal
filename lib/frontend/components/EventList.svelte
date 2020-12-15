@@ -55,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each $eventStore as event (event.id)}
+      {#each $eventStore.events as event (event.id)}
         <tr>
           <td>
             {event.startTime

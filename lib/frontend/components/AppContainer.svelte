@@ -5,7 +5,7 @@
   import { configStore, eventStore } from '../stores'
 
   $: showTrackingPanel = $configStore.track === undefined
-  $: showEventList = $eventStore.length > 0
+  $: showEventList = $eventStore.events.length > 0
 </script>
 
 {#if showTrackingPanel}
