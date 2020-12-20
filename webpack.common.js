@@ -16,7 +16,7 @@ if (isFirebaseEnv && hasFirebaseConfig) {
 }
 
 module.exports = {
-  entry: path.join(__dirname, 'lib', 'static', 'index.js'),
+  entry: path.join(__dirname, 'lib', 'frontend', 'index.js'),
   output: {
     filename: '[name].[hash].js',
     path: destination,

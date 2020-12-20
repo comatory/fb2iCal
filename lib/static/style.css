@@ -73,37 +73,7 @@ img#logo {
   margin: 5px;
 }
 
-input {
-  font-size: 1rem;
-}
-
 #current-download {
   display: none;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-input#url {
-  flex: 1;
-}
-
-.show {
-  display: block;
-}
-
-.hidden {
-  display: none;
-}
-
-.notice {
-  font-size: 0.9rem;
-}
-
-#nojs {
-  margin: 5px 0;
 }
 

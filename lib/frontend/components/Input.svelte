@@ -8,11 +8,16 @@
   #form input {
     margin: 5px;
   }
+
+  input#url {
+    flex: 1;
+    font-size: 1rem;
+  }
 </style>
 
 <script>
   import { createEvent } from '../actions'
-  import logger from '../../static/app/logger'
+  import logger from '../services/logger'
 
   let value
 
