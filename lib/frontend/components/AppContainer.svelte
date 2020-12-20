@@ -1,7 +1,8 @@
 <script>
   import Input from './Input.svelte'
-  import TrackingPanel from './TrackingPanel.svelte'
   import EventList from './EventList.svelte'
+  import Status from './Status.svelte'
+  import TrackingPanel from './TrackingPanel.svelte'
 
   import { configStore, eventStore } from '../stores'
 
@@ -13,6 +14,7 @@
   <TrackingPanel />
 {/if}
 
+<Status />
 <Input />
 {#if showEventList}
   <EventList />

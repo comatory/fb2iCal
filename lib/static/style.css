@@ -91,20 +91,6 @@ input#url {
   flex: 1;
 }
 
-#status {
-  flex: 1;
-  height: 1rem;
-  margin: 5px;
-}
-
-.status-item {
-  display: none;
-  min-width: 200px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 .show {
   display: block;
 }
