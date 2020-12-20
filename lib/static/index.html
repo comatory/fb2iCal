@@ -23,22 +23,22 @@
         file that you can import into your calendar. <strong>Only public events are supported.</strong>
       </p>
 
-      <form action='/download' method='POST' id="form">
-        <input
-          required
-          pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
-          id="url"
-          name="url"
-          placeholder="Paste / type FB event URL or event number..."
-          title="Please insert Facebook Event URL / Number"
-        />
-        <input id="submit" type='submit' value='Submit' />
-      </form>
-
       <noscript>
         <div id="nojs" class="notice">
           🤚 JavaScript is <em>disabled</em>. Enable to get full experience and offline capabilities.
         </div>
+        <form action='/download' method='POST' id="form">
+          <input
+            required
+            pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
+            id="url"
+            name="url"
+            placeholder="Paste / type FB event URL or event number..."
+            title="Please insert Facebook Event URL / Number"
+          />
+          <input id="submit" type='submit' value='Submit' />
+        </form>
+
       </noscript>
 
       <div id="status">

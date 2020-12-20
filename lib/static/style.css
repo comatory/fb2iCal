@@ -91,16 +91,6 @@ input#url {
   flex: 1;
 }
 
-#form {
-  flex: 1;
-  display: flex;
-  min-width: 300px;
-}
-
-#form input {
-  margin: 5px;
-}
-
 #status {
   flex: 1;
   height: 1rem;

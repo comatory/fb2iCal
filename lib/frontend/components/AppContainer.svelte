@@ -1,4 +1,5 @@
 <script>
+  import Input from './Input.svelte'
   import TrackingPanel from './TrackingPanel.svelte'
   import EventList from './EventList.svelte'
 
@@ -12,6 +13,7 @@
   <TrackingPanel />
 {/if}
 
+<Input />
 {#if showEventList}
   <EventList />
 {/if}
