@@ -14,7 +14,7 @@
 </style>
 
 <script>
-  import { requestStore } from '../stores'
+  import { parseStatusStore, requestStore } from '../stores'
 
   $: error = ($requestStore && $requestStore.error) ? $requestStore.error : null
   $: pendingRequest = Boolean($requestStore && !$requestStore.error)
@@ -29,6 +29,11 @@
   {#if pendingRequest}
     <div class='status-item'>
       Fetching event {$requestStore.url}
+    </div>
+  {/if}
+  {#if $parseStatusStore}
+    <div class='status-item'>
+      {$parseStatusStore}
     </div>
   {/if}
 </div>
