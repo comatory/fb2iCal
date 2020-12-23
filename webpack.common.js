@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
 const pkg = require('./package.json')
@@ -18,7 +19,7 @@ if (isFirebaseEnv && hasFirebaseConfig) {
 module.exports = {
   entry: path.join(__dirname, 'lib', 'frontend', 'index.js'),
   output: {
-    filename: '[name].[hash].js',
+    filename: '[name].[fullhash].js',
     path: destination,
   },
   resolve: {
@@ -27,6 +28,11 @@ module.exports = {
     },
     extensions: [ '.mjs', '.js', '.svelte' ],
     mainFields: [ 'svelte', 'browser', 'module', 'main' ],
+    fallback: {
+      util: require.resolve('util/'),
+      stream: require.resolve('stream-browserify'),
+      path: require.resolve('path-browserify'),
+    },
   },
   module: {
     rules: [
@@ -36,7 +42,7 @@ module.exports = {
         use: {
           loader: 'svelte-loader',
           options: {
-            emitCss: true,
+            emitCss: false,
           },
         },
       },
@@ -47,21 +53,32 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: path.join(__dirname, 'lib', 'static', '{*.ico,*.json,*.png,*.css}'), to: destination, flatten: true },
-      ],
-    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'lib', 'static', 'index.html'),
       version: pkg.version,
-      inject: 'body',
     }),
-    new MiniCssExtractPlugin(),
+    new webpack.ProvidePlugin({ Buffer: ['buffer', 'Buffer'] }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.join(__dirname, 'lib', 'static', 'favicon.ico'), to: destination },
+        { from: path.join(__dirname, 'lib', 'static', 'manifest.json'), to: destination },
+        { from: path.join(__dirname, 'lib', 'static', 'style.css'), to: destination },
+        { from: path.join(__dirname, 'lib', 'static', 'icon-180.png'), to: destination },
+        { from: path.join(__dirname, 'lib', 'static', 'icon-192.png'), to: destination },
+        { from: path.join(__dirname, 'lib', 'static', 'icon-512.png'), to: destination },
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[fullhash].css',
+    }),
     new GenerateSW({
       swDest: 'sw.js',
       clientsClaim: true,
       skipWaiting: true,
-    }),
+    })
   ],
 }
