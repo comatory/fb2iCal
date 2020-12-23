@@ -14,8 +14,8 @@ class FirebaseTransport extends Transport {
       callback(null, info)
       this.emit('logged', info)
     } catch (err) {
-      callback(error)
-      this.emit('error', error)
+      callback(err)
+      this.emit('error', err)
     }
 
     return info
