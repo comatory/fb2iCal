@@ -8,8 +8,8 @@
     "node": "10.15.0"
   },
   "scripts": {
-    "build": "npm run clean:build && webpack --config=./webpack.prod.js",
-    "build:dev": "npm run clean:build && webpack --config=./webpack.dev.js",
+    "build": "npm run clean:build && NODE_ENV=production webpack --config=./webpack.prod.js",
+    "build:dev": "npm run clean:build && NODE_ENV=development webpack --config=./webpack.dev.js",
     "build:firebase:hosting": "npm run clean:build && NODE_ENV=production NODE_APP=firebase webpack --config=./webpack.prod.js",
     "build:firebase:hosting:dev": "npm run clean:build && NODE_ENV=development NODE_APP=firebase webpack --config=./webpack.dev.js",
     "clean:build": "rm dist/** || true",

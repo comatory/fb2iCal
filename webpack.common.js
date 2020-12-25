@@ -12,6 +12,9 @@ const isFirebaseEnv = process.env.NODE_APP === 'firebase'
 const firebaseConfigFilePath = path.join(__dirname, '.firebaserc')
 const hasFirebaseConfig = fs.existsSync(firebaseConfigFilePath)
 
+const isDev = process.env.NODE_ENV === 'development'
+console.log(`Detected dev mode? ${isDev}`)
+
 if (isFirebaseEnv && hasFirebaseConfig) {
   console.info('Prepare build for Firebase hosting')
 }
@@ -43,6 +46,8 @@ module.exports = {
           loader: 'svelte-loader',
           options: {
             emitCss: false,
+            hotReload: isDev,
+            dev: isDev,
           },
         },
       },
