@@ -1,0 +1,21 @@
+name: Deploy to firebase
+
+on:
+  workflow_dispatch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12.7
+      - name: Deploy to Firebase
+        timeout-minutes: 10
+        run: |
+          npm ci --no-color --no-progress
+          npm run deploy:firebase
+        env:
+          CI: true
+
