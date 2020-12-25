@@ -21,12 +21,14 @@
 </style>
 
 <script>
-  import { createEvent } from '../actions'
   import logger from '../services/logger'
 
   export let error
   export let pending
   export let pendingRequest
+  export let onModuleLoadStart
+  export let onModuleLoadStop
+  export let onModuleLoadError
 
   let value = ''
   $: value = error && pendingRequest && pendingRequest.url || ''
@@ -38,15 +40,24 @@
     pending ? 'input--pending': '',
   ].join(' ')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (!form.reportValidity()) {
       return
     }
 
     e.preventDefault()
 
-    createEvent(value, { logger })
-    value = ''
+   try {
+     onModuleLoadStart()
+     const module = await import('../actions')
+     onModuleLoadStop()
+
+     module.createEvent(value, { logger })
+     value = ''
+   } catch (importError) {
+     onModuleLoadError(importError)
+     console.error(importError)
+   }
   }
 
   const handleChange = (e) => {
