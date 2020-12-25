@@ -26,6 +26,9 @@
   export let error
   export let pending
   export let pendingRequest
+  export let onModuleLoadStart
+  export let onModuleLoadStop
+  export let onModuleLoadError
 
   let value = ''
   $: value = error && pendingRequest && pendingRequest.url || ''
@@ -45,10 +48,14 @@
     e.preventDefault()
 
    try {
+     onModuleLoadStart()
      const module = await import('../actions')
+     onModuleLoadStop()
+
      module.createEvent(value, { logger })
      value = ''
    } catch (importError) {
+     onModuleLoadError(importError)
      console.error(importError)
    }
   }

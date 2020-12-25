@@ -8,6 +8,10 @@
   $: pendingRequest = $requestStore
   $: status = $parseStatusStore
   $: swStatus = $swStatusStore
+
+  const handleModuleLoadStart = () => parseStatusStore.set('Loading application data.')
+  const handleModuleLoadEnd = () => parseStatusStore.set(null)
+  const handleModuleLoadError = (error) => parseStatusStore.set('Failed to load application data.')
 </script>
 
 <div class="input-container">
@@ -15,6 +19,9 @@
     {pending}
     {pendingRequest}
     {error}
+    onModuleLoadStart={handleModuleLoadStart}
+    onModuleLoadStop={handleModuleLoadEnd}
+    onModuleLoadError={handleModuleLoadError}
   />
   <Status
     {error}
