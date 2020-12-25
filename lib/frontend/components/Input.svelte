@@ -30,31 +30,27 @@
   let value
   let form
 
-  const onChange = (e) => {
-    value = e.currentTarget.value
-  }
-
   let inputClasses = ''
   $: inputClasses = [
     error ? 'input--error' : '',
     pending ? 'input--pending': '',
   ].join(' ')
-  console.log(inputClasses)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     if (!form.reportValidity()) {
       return
     }
 
     e.preventDefault()
+
     createEvent(value, { logger })
   }
 </script>
 
-<form id="form" bind:this={form}>
+<form id="form" on:submit={handleSubmit} bind:this={form}>
   <input
     required
-    pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
+    pattern={String.raw`^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$`}
     id="url"
     name="url"
     class={inputClasses}
