@@ -21,7 +21,6 @@
 </style>
 
 <script>
-  import { createEvent } from '../actions'
   import logger from '../services/logger'
 
   export let error
@@ -38,15 +37,20 @@
     pending ? 'input--pending': '',
   ].join(' ')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (!form.reportValidity()) {
       return
     }
 
     e.preventDefault()
 
-    createEvent(value, { logger })
-    value = ''
+   try {
+     const module = await import('../actions')
+     module.createEvent(value, { logger })
+     value = ''
+   } catch (importError) {
+     console.error(importError)
+   }
   }
 
   const handleChange = (e) => {
