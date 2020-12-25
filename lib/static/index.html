@@ -23,59 +23,32 @@
         file that you can import into your calendar. <strong>Only public events are supported.</strong>
       </p>
 
-      <form action='/download' method='POST' id="form">
-        <input
-          required
-          pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
-          id="url"
-          name="url"
-          placeholder="Paste / type FB event URL or event number..."
-          title="Please insert Facebook Event URL / Number"
-        />
-        <input id="submit" type='submit' value='Submit' />
-      </form>
-
       <noscript>
         <div id="nojs" class="notice">
           🤚 JavaScript is <em>disabled</em>. Enable to get full experience and offline capabilities.
         </div>
+        <form action='/download' method='POST' id="form">
+          <input
+            required
+            pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
+            id="url"
+            name="url"
+            placeholder="Paste / type FB event URL or event number..."
+            title="Please insert Facebook Event URL / Number"
+          />
+          <input id="submit" type='submit' value='Submit' />
+        </form>
+
       </noscript>
 
-      <div id="status">
-        <div class="status-item" id="network">
-          Fetching file...
-        </div>
-        <div class="status-item" id="parsing">
-          Parsing data...
-        </div>
-        <div class="status-item" id="error">
-        </div>
-        <div class="status-item" id="service-worker">
-        </div>
-      </div>
-
-      <br />
-
-      <div class="list-wrapper">
-        <table id="list" class="hidden">
-          <thead>
-            <tr>
-              <td>Date</td>
-              <td>Name</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
+      <div id="root"></div>
     </article>
-
+    
     <footer>
       v.<%= htmlWebpackPlugin.options.version %> ◆
       <a href="https://ondrejsynacek.com" target="_blank">Ondrej Synacek</a> (2019) ◆
       <a href="https://github.com/comatory/fb2iCal" target="_blank" title="Github">Source</a> ◆
-      <a href="/about" target="_blank" title="About the project">About</about>
+      <a href="/about" target="_blank" title="About the project">About</a>
     </footer>
 
     <script>
