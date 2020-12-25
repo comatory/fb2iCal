@@ -1,7 +1,7 @@
 <style>
   #status {
     flex: 1;
-    height: 1rem;
+    height: 2rem;
     margin: 5px;
   }
 
