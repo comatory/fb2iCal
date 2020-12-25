@@ -59,6 +59,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'lib', 'static', 'index.html'),
       version: pkg.version,
