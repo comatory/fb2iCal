@@ -35,6 +35,7 @@ module.exports = {
       util: require.resolve('util/'),
       stream: require.resolve('stream-browserify'),
       path: require.resolve('path-browserify'),
+      buffer:  require.resolve('buffer/'),
     },
   },
   module: {
@@ -62,7 +63,6 @@ module.exports = {
       template: path.join(__dirname, 'lib', 'static', 'index.html'),
       version: pkg.version,
     }),
-    new webpack.ProvidePlugin({ Buffer: ['buffer', 'Buffer'] }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG),
