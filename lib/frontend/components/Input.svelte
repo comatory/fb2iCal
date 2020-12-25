@@ -1,5 +1,6 @@
 <style>
   #form {
+    box-sizing: border-box;
     flex: 1;
     display: flex;
     min-width: 300px;
@@ -12,6 +13,10 @@
   input#url {
     flex: 1;
     font-size: 1rem;
+  }
+
+  .input--error {
+    border: 1px solid firebrick;
   }
 </style>
 
@@ -28,6 +33,13 @@
     value = e.currentTarget.value
   }
 
+  let inputClasses = ''
+  $: inputClasses = [
+    error ? 'input--error' : '',
+    pending ? 'input--pending': '',
+  ].join(' ')
+  console.log(inputClasses)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     createEvent(value, { logger })
@@ -40,6 +52,7 @@
     pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
     id="url"
     name="url"
+    class={inputClasses}
     bind:value={value}
     disabled={pending}
     placeholder="Paste / type FB event URL or event number..."
@@ -47,6 +60,7 @@
   />
   <input
     id="submit"
+    class={inputClasses}
     type='submit'
     value='Submit'
     disabled={pending}

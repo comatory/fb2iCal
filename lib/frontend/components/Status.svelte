@@ -1,7 +1,9 @@
 <style>
   #status {
     flex: 1;
-    height: 2rem;
+    min-height: 1rem;
+    max-height: 3rem;
+    overflow: auto;
     margin: 5px;
   }
 
@@ -10,6 +12,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  .status-item--error {
+    box-sizing: border-box;
+    border: 1px solid firebrick;
+    background-color: salmon;
+    color: darkred;
   }
 </style>
 
