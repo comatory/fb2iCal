@@ -26,8 +26,10 @@
 
   export let error
   export let pending
+  export let pendingRequest
 
-  let value
+  let value = ''
+  $: value = error && pendingRequest && pendingRequest.url || ''
   let form
 
   let inputClasses = ''
@@ -44,6 +46,11 @@
     e.preventDefault()
 
     createEvent(value, { logger })
+    value = ''
+  }
+
+  const handleChange = (e) => {
+    value = e.currentTarget.value
   }
 </script>
 
@@ -54,10 +61,11 @@
     id="url"
     name="url"
     class={inputClasses}
-    bind:value={value}
     disabled={pending}
     placeholder="Paste / type FB event URL or event number..."
     title="Please insert Facebook Event URL / Number"
+    on:change={handleChange}
+    value={value}
   />
   <input
     id="submit"

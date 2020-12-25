@@ -13,6 +13,7 @@
 <div class="input-container">
   <Input
     {pending}
+    {pendingRequest}
     {error}
   />
   <Status
