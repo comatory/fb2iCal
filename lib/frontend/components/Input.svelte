@@ -28,6 +28,7 @@
   export let pending
 
   let value
+  let form
 
   const onChange = (e) => {
     value = e.currentTarget.value
@@ -41,12 +42,16 @@
   console.log(inputClasses)
 
   const handleSubmit = async (e) => {
+    if (!form.reportValidity()) {
+      return
+    }
+
     e.preventDefault()
     createEvent(value, { logger })
   }
 </script>
 
-<form id="form">
+<form id="form" bind:this={form}>
   <input
     required
     pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|\d+$"
