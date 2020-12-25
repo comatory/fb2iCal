@@ -14,31 +14,32 @@
 </style>
 
 <script>
-  import { parseStatusStore, requestStore, swStatusStore } from '../stores'
-
-  $: error = ($requestStore && $requestStore.error) ? $requestStore.error : null
-  $: pendingRequest = Boolean($requestStore && !$requestStore.error)
+  export let error
+  export let pending
+  export let pendingRequest
+  export let status
+  export let swStatus
 </script>
 
 <div id='status'>
   {#if error}
-    <div class='status-item'>
+    <div class='status-item status-item--error'>
       {error.toString()}
     </div>
   {/if}
-  {#if pendingRequest}
+  {#if pending && pendingRequest}
     <div class='status-item'>
-      Fetching event {$requestStore.url}
+      Fetching event {pendingRequest.url}
     </div>
   {/if}
-  {#if $parseStatusStore}
+  {#if status}
     <div class='status-item'>
-      {$parseStatusStore}
+      {status}
     </div>
   {/if}
-  {#if $swStatusStore}
+  {#if swStatus}
     <div class='status-item'>
-      {$swStatusStore}
+      {swStatus}
     </div>
   {/if}
 </div>

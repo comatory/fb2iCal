@@ -1,5 +1,5 @@
 <script>
-  import Input from './Input.svelte'
+  import InputContainer from './InputContainer.svelte'
   import EventList from './EventList.svelte'
   import Status from './Status.svelte'
   import TrackingPanel from './TrackingPanel.svelte'
@@ -14,8 +14,7 @@
   <TrackingPanel />
 {/if}
 
-<Status />
-<Input />
+<InputContainer />
 {#if showEventList}
   <EventList />
 {/if}

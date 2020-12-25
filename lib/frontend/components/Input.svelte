@@ -19,6 +19,9 @@
   import { createEvent } from '../actions'
   import logger from '../services/logger'
 
+  export let error
+  export let pending
+
   let value
 
   const onChange = (e) => {
@@ -38,6 +41,7 @@
     id="url"
     name="url"
     bind:value={value}
+    disabled={pending}
     placeholder="Paste / type FB event URL or event number..."
     title="Please insert Facebook Event URL / Number"
   />
@@ -45,6 +49,7 @@
     id="submit"
     type='submit'
     value='Submit'
+    disabled={pending}
     on:click={handleSubmit}
   />
 </form>
