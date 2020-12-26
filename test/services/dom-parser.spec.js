@@ -258,6 +258,20 @@ describe(parseUsingDOM, () => {
     })
 
 
+    it('should return null if title was blacklisted', () => {
+      const html = `
+        <html>
+          <head>
+            <title>Content Not Found</title>
+          </head>
+        </html>
+      `
+      const eventData = parseUsingDOM(html, { logger })
+
+      expect(eventData).to.be.null
+    })
+
+
     it('should NOT return start time without title', () => {
       const html = `
         <html>
