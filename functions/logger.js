@@ -22,7 +22,7 @@ class FirebaseTransport extends Transport {
   }
 }
 
-const createRouteLogger = (db) => {
+const createRouteLogger = ({ db }) => {
   return expressWinston.logger({
     transports: [
       new FirebaseTransport({ db })
