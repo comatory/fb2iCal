@@ -17,7 +17,7 @@
     "cheerio": "^1.0.0-rc.3",
     "cors": "^2.8.5",
     "dayjs": "^1.8.16",
-    "ejs": "^2.7.1",
+    "ejs": "^3.1.7",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "express-winston": "^4.0.5",
